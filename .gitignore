@@ -2,13 +2,32 @@
 .DS_Store
 node_modules/
 dist/
+product/
 unpackage/
 npm-debug.log
 
-# 文件锁定和错误日志
-yarn-error.log
+# 文件锁定
 yarn.lock
 package-lock.json
+
+### Node ###
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+### Eclipse ###
+.metadata
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.recommenders
 
 # 自定义文件以及编辑器文件
 *.cmd
