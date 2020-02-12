@@ -1,0 +1,18 @@
+# node.js
+.DS_Store
+node_modules/
+dist/
+unpackage/
+npm-debug.log
+
+# 文件锁定和错误日志
+yarn-error.log
+yarn.lock
+package-lock.json
+
+# 自定义文件以及编辑器文件
+*.cmd
+*.tmp
+.idea/
+.vscode/
+test/
