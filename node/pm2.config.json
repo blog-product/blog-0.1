@@ -1,0 +1,15 @@
+{
+    "apps": {
+        "name": "finance-server",
+        "script": "bin/www",
+        "watch": true,
+        "ignore_watch": [
+            "node_modules",
+            "logs"
+        ],
+        "instances": 1,
+        "error_file": "logs/err.log",
+        "out_file": "logs/out.log",
+        "log-date-format": "YYYY-MM-DD HH:mm:ss"
+    }
+}
