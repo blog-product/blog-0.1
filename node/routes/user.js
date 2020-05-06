@@ -36,7 +36,7 @@ router.get('/list', async (ctx, next) => {
 // 用户详情
 router.get('/detail', async (ctx, next) => {
     const userInfo = await detail(ctx.state)
-	console.log("info", userInfo)
+	// console.log("info", userInfo)
     ctx.body = new SuccessModel('0000', userInfo)
 });
 
