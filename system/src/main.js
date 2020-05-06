@@ -1,43 +1,33 @@
+// with polyfills
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
+
 import Vue from 'vue'
-
-import 'normalize.css/normalize.css' // A modern alternative to CSS resets
-
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
-import locale from 'element-ui/lib/locale/lang/en' // lang i18n
-
-import '@/styles/index.scss' // global css
-
-import App from './App'
-import store from './store'
+import App from './App.vue'
 import router from './router'
+import store from './store/'
+import { VueAxios } from './utils/request'
 
-import '@/icons' // icon
-import '@/permission' // permission control
+// mock
+// WARNING: `mockjs` NOT SUPPORT `IE` PLEASE DO NOT USE IN `production` ENV.
+// import './mock'
 
-/**
- * If you don't want to use mock-server
- * you want to use MockJs for mock api
- * you can execute: mockXHR()
- *
- * Currently MockJs will be used in the production environment,
- * please remove it before going online ! ! !
- */
-if (process.env.NODE_ENV === 'production') {
-  const { mockXHR } = require('../mock')
-  mockXHR()
-}
-
-// set ElementUI lang to EN
-Vue.use(ElementUI, { locale })
-// 如果想要中文版 element-ui，按如下方式声明
-// Vue.use(ElementUI)
+import bootstrap from './core/bootstrap'
+import './core/lazy_use'
+// import './permission' // permission control
+import './utils/filter' // global filter
+import './components/global.less'
+import { Dialog } from '@/components'
 
 Vue.config.productionTip = false
 
+// mount axios Vue.$http and this.$http
+Vue.use(VueAxios)
+Vue.use(Dialog)
+
 new Vue({
-  el: '#app',
   router,
   store,
+  created: bootstrap,
   render: h => h(App)
-})
+}).$mount('#app')

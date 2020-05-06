@@ -8,15 +8,16 @@ const logger = require('koa-logger')
 const path = require('path')
 const fs = require('fs')
 const morgan = require('koa-morgan')
-const staticFiles = require('koa-static') // 处理静态资源
+const koa_jwt = require("koa-jwt")
+const { verToken } = require("./middleware/tokenCheck")
 
-const article = require('./routes/article')
+const sequelize = require("./db/sequelize")
+
+const blog = require('./routes/blog')
+const user = require('./routes/user')
 
 // error handler
 onerror(app)
-
-// 指定 public目录为静态资源目录，用来存放 js css images 等
-app.use(staticFiles(path.resolve(__dirname, "./public")))
 
 // 处理跨域
 app.use(cors())
@@ -52,8 +53,44 @@ if (ENV != 'production') {
   }));
 }
 
+app.use(async(ctx, next)=> {
+  var token = ctx.headers.authorization;
+  if(token == undefined){
+      await next();
+  }else{
+      verToken(token).then((data)=> {
+      //这一步是为了把解析出来的用户信息存入全局state中，这样在其他任一中间价都可以获取到state中的值
+          ctx.state = {
+              data:data
+          };
+      })
+      await next();
+  }
+})
+
+app.use(async(ctx, next)=>{
+  return next().catch((err) => {
+      if (401 == err.status) {
+        ctx.status = 401;
+          ctx.body = {
+              code:401,
+              msg:'登录过期，请重新登录'
+          }
+      } else {
+          throw err;
+      }
+  });
+});
+
+app.use(koa_jwt({
+secret: "longyzw"
+}).unless({
+path: ['/api/user/login'] //除了这个地址，其他的URL都需要验证
+}));
+
 // routes
-app.use(article.routes(), article.allowedMethods())
+app.use(blog.routes(), blog.allowedMethods())
+app.use(user.routes(), user.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {

@@ -1,6 +1,6 @@
 {
     "apps": {
-        "name": "finance-server",
+        "name": "node-blog-express",
         "script": "bin/www",
         "watch": true,
         "ignore_watch": [

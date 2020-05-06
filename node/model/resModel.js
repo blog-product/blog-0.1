@@ -3,10 +3,10 @@ class BaseModel {
         this.code = code
         if(code === '0000'){
             this.data = data
-            this.msg = ''
+            this.message = ''
         }else {
             this.data = ''
-            this.msg = data
+            this.message = data
         }
     }
 }

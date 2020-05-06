@@ -1,0 +1,2 @@
+::ffff:127.0.0.1 - - [16/Feb/2020:08:52:43 +0000] "GET /api/blog/list HTTP/1.0" 200 1665 "http://localhost:8080/" "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.100 Safari/537.36"
+::1 - - [16/Feb/2020:08:52:46 +0000] "GET /api/blog/detail?id=11 HTTP/1.0" 200 290 "http://localhost:8080/detail.html?id=11" "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.100 Safari/537.36"
