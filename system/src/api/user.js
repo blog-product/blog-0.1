@@ -35,6 +35,14 @@ export function getInfo () {
   })
 }
 
+export function userList (params) {
+  return axios({
+    url: '/api/user/list',
+    method: 'get',
+    params
+  })
+}
+
 export function getCurrentUserNav (token) {
   return axios({
     url: '/api/user/nav',

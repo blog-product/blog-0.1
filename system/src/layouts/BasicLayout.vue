@@ -68,7 +68,7 @@ import config from '@/config/defaultSettings'
 import RouteView from './RouteView'
 import SideMenu from '@/components/Menu/SideMenu'
 import GlobalHeader from '@/components/GlobalHeader'
-import GlobalFooter from '@/components/GlobalFooter'
+// import GlobalFooter from '@/components/GlobalFooter'
 import SettingDrawer from '@/components/SettingDrawer'
 // import { convertRoutes } from '@/utils/routeConvert'
 import { asyncRouterMap } from '@/config/router.config.js'
@@ -80,7 +80,7 @@ export default {
     RouteView,
     SideMenu,
     GlobalHeader,
-    GlobalFooter,
+    // GlobalFooter,
     SettingDrawer
   },
   data () {

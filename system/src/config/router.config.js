@@ -329,20 +329,20 @@ export const asyncRouterMap = [
         name: 'manage',
         component: RouteView,
         redirect: '/manage/basic',
-        meta: { title: '管理员管理', icon: 'profile', permission: [ 'profile' ] },
+        meta: { title: '管理员管理', icon: 'profile' },
         children: [
           {
             path: '/manage/basic',
             name: 'ManageBasic',
-            component: () => import('@/views/manage/basic/Index'),
-            meta: { title: '管理员列表', permission: [ 'profile' ] }
-          },
-          {
-            path: '/manage/advanced',
-            name: 'ManageAdvanced',
-            component: () => import('@/views/manage/advanced/Advanced'),
-            meta: { title: '高级详情页', permission: [ 'profile' ] }
+            component: () => import('@/views/manage/UserList'),
+            meta: { title: '管理员列表' }
           }
+          // {
+          //   path: '/manage/advanced',
+          //   name: 'ManageAdvanced',
+          //   component: () => import('@/views/manage/advanced/Advanced'),
+          //   meta: { title: '高级详情页', permission: [ 'profile' ] }
+          // }
         ]
       }
     ]
